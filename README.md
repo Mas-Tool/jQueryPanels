@@ -1,0 +1,4 @@
+jQueryPanels
+============
+
+jQuery Panels Plugin
