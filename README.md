@@ -1,4 +1,3 @@
-jQueryPanels
-============
+# [jQuery Panel](http://jquerypanels.mas-tool.com)
 
-jQuery Panels Plugin
+Docs & Examples at: http://jquerypanels.mas-tool.com
