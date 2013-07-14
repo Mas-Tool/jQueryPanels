@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<!--[if lt IE 7]>      <html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>         <html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>         <html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js"> <!--<![endif]-->
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+
+    <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="css/bootstrap.css">
+    <link rel="stylesheet" href="css/jquery-ui-1.10.3.custom.css">
+    <link rel="stylesheet" href="css/main.css">
+
+    <script src="js/vendor/modernizr-2.6.2.min.js"></script>
+    <script src="https://google-code-prettify.googlecode.com/svn/loader/run_prettify.js"></script>
+</head>
+<body style="padding: 20px">
+<!--[if lt IE 7]>
+<p class="chromeframe">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> or <a href="http://www.google.com/chromeframe/?redirect=true">activate Google Chrome Frame</a> to improve your experience.</p>
+<![endif]-->
+
+<script src="js/vendor/jquery-1.9.1.min.js"></script>
+<script src="js/vendor/jquery-ui-1.10.3.custom.js"></script>
+<script src="js/jquery.gridPanel.js"></script>
+<script src="js/bootstrap.js"></script>
+<script src="js/plugins.js"></script>
+<div class="page-header">
+    <h1>jQuery Panels (beta)<small> by Miky Petrescu</small></h1>
+</div>
+<div id="main" >
+    <div>
+        <h2>Grid Panel</h2>
+        <span>The grid panel allows you to layout elements in a tabular structure or rows and columns. It is similar to the HTML table element but it is more flexible and compatible.</span>
+        <br/>
+        <span>If you have experience with WPF/Silverlight grid panel, you will feel home.</span>
+        <h3>Definition options:</h3>
+        <p><span>You set <em>row-definitions</em> and <em>column-definitions</em> attributes on the grid (container) element.</span></p>
+        <strong>Fixed</strong><span> - You can set a fixed value in pixels by setting a number.</span>
+        <br/>
+        <strong>Auto</strong><span> - Auto definitions will take as much space as it needs, without respecting the space left.</span>
+        <br/>
+        <strong>~Auto</strong><span> - Soft auto definitions will take as much space as it needs as long as there is a free space.</span>
+        <br/>
+        <strong>Star (*)</strong><span> - Star definitions will fill the space left (after filling the fixed, auto and ~auto definitions). If you define multiple star columns/rows they will split the space equally. You can spread the space differently by specifying a number with a star.</span>
+        <br/>
+        <h3>Properties</h3>
+        <p><span>You set the attributes on the grid children (1st level only) in order to set their position and span.</span></p>
+        <strong>grid-row</strong><span> - Sets the row of the element (default: 0)</span>
+        <br/>
+        <strong>grid-column</strong><span> - Sets the column of the element (default: 0)</span>
+        <br/>
+        <strong>grid-row-span</strong><span> - Sets how many rows the element will span over (default: 1)</span>
+        <br/>
+        <strong>grid-column-span</strong><span> - Sets how many columns the element will span over (default: 1)</span>
+        <br/>
+        <h3>Events:</h3>
+        <strong>gp-item-positioned</strong>
+        <span> - Notifies when an item was positioned. Arguments: Grid, Item.</span>
+        <h4>Demo 1</h4>
+        <span>Simple grid definition</span>
+        <br/>
+        <span class="definition-desc">row-definitions="*,auto" column-definitions="150,*,*,2*"</span>
+        <div class="resizable ui-widget-content">
+            <div id="demo1grid" class="grid" row-definitions="*,auto" column-definitions="150,*,*,2*" style="position: absolute; height:100%; width: 100%;" >
+                <div class="gridItem grid-item1" grid-column="0">
+                    <strong>0. </strong><em>grid-column="0"</em>
+                </div>
+
+                <div class="gridItem grid-item2" grid-column="1">
+                    <strong>1. </strong> <em>grid-column="1"</em>
+                </div>
+                <div class="gridItem grid-item3" grid-column="2">
+                    <strong>2. </strong> <em>grid-column="2"</em>
+                </div>
+                <div class="gridItem grid-item4" grid-column="3">
+                    <strong>3. </strong> <em>grid-column="3"</em>
+                </div>
+                <div class="gridItem grid-item5" grid-row="1" grid-column-span="2">
+                    <strong>4. </strong> <em>grid-row="1"<br/>grid-column-span="2"</em>
+                </div>
+                <div class="gridItem grid-item6" grid-row="1" grid-column="2" grid-column-span="2">
+                    <strong>5. </strong> <em>grid-row="1"<br/>grid-column="2"<br/>grid-column-span="2"</em>
+                </div>
+            </div>
+        </div>
+        <p class="text-info"><em>You can resize the grid</em></p>
+        <button class="btn btn-small" data-toggle="collapse" data-target="#demo1Code">Show Code</button>
+        <div id="demo1Code" class="collapse out">
+           <pre class="prettyprint">
+&lt;div row-definitions=&quot;*,auto&quot; column-definitions=&quot;150,*,*,2*&quot;&gt;
+    &lt;div grid-column=&quot;0&quot;&gt;
+        &lt;strong&gt;0. &lt;/strong&gt;&lt;em&gt;grid-column=&quot;0&quot;&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div grid-column=&quot;1&quot;&gt;
+        &lt;strong&gt;1. &lt;/strong&gt; &lt;em&gt;grid-column=&quot;1&quot;&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div grid-column=&quot;2&quot;&gt;
+        &lt;strong&gt;2. &lt;/strong&gt; &lt;em&gt;grid-column=&quot;2&quot;&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div grid-column=&quot;3&quot;&gt;
+        &lt;strong&gt;3. &lt;/strong&gt; &lt;em&gt;grid-column=&quot;3&quot;&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div grid-row=&quot;1&quot; grid-column-span=&quot;2&quot;&gt;
+        &lt;strong&gt;4. &lt;/strong&gt; &lt;em&gt;grid-row=&quot;1&quot;&lt;br/&gt;grid-column-span=&quot;2&quot;&lt;/em&gt;
+    &lt;/div&gt;
+    &lt;div grid-row=&quot;1&quot; grid-column=&quot;2&quot; grid-column-span=&quot;2&quot;&gt;
+        &lt;strong&gt;5. &lt;/strong&gt; &lt;em&gt;grid-row=&quot;1&quot;&lt;br/&gt;grid-column=&quot;2&quot;&lt;br/&gt;grid-column-span=&quot;2&quot;&lt;/em&gt;
+    &lt;/div&gt;
+&lt;/div&gt;</pre>
+            <pre class="prettyprint">$(&quot;.grid&quot;).gridPanel();</pre>
+        </div>
+    </div>
+    <div>
+        <h4>Demo 2</h4>
+        <span>
+            This demo shows the use of auto and soft auto definitions.<br/>
+            The middle grid item  will respect its container height and will not overflow.<br/>
+            We also have overflow="auto" so content will be scrolled instead of clipped.<br/>
+            <button class="btn btn-small btn-primary" onclick="addDemo2Content()">Add content to middle item</button>
+            <button class="btn btn-small btn-primary" onclick="clearDemo2Content()">Clear</button>
+        </span>
+        <br/>
+        <span class="definition-desc">row-definitions="auto,~auto,auto"</span>
+        <div class="resizable ui-widget-content">
+            <div id="demo2grid" class="grid" row-definitions="auto,~auto,auto" style="position: absolute; height:100%; width: 100%;" >
+                <div class="gridItem grid-item1" grid-row="0">
+                    <strong>0. </strong><em>grid-row="0"</em>
+                </div>
+                <div class="gridItem grid-item2" grid-row="1" style="overflow: auto;">
+                    <strong>1. </strong><em>grid-row="1"</em>
+                </div>
+                <div class="gridItem grid-item3" grid-row="2" grid-column="0">
+                    <strong>2. </strong><em>grid-row="2"</em>
+                </div>
+            </div>
+        </div>
+        <button class="btn btn-small" data-toggle="collapse" data-target="#demo2Code">Show Code</button>
+        <div id="demo2Code" class="collapse out">
+           <pre class="prettyprint">
+&lt;div row-definitions=&quot;auto,~auto,auto&quot;&gt;
+   &lt;div grid-row=&quot;0&quot;&gt;
+       &lt;strong&gt;0. &lt;/strong&gt;&lt;em&gt;grid-row=&quot;0&quot;&lt;/em&gt;
+   &lt;/div&gt;
+   &lt;div grid-row=&quot;1&quot; class=&quot;gridItem-2&quot;&gt;
+       &lt;strong&gt;1. &lt;/strong&gt;&lt;em&gt;grid-row=&quot;1&quot;&lt;/em&gt;
+   &lt;/div&gt;
+   &lt;div grid-row=&quot;2&quot; grid-column=&quot;0&quot;&gt;
+       &lt;strong&gt;2. &lt;/strong&gt;&lt;em&gt;grid-row=&quot;2&quot;&lt;/em&gt;
+   &lt;/div&gt;
+&lt;/div&gt;</pre>
+            <pre class="prettyprint">
+$(&quot;.grid&quot;).gridPanel();
+function addDemo2Content(){
+    $(&quot;.grid-item2&quot;).append(&quot;Content&lt;br/&gt;&quot;);
+    $(&quot;.grid&quot;).gridPanel(); //update position and size
+}
+function clearDemo2Content(){
+    $(&quot;.grid-item2&quot;).empty();
+    $(&quot;.grid&quot;).gridPanel(); //update position and size
+}</pre>
+        </div>
+    </div>
+</div>
+
+<footer>
+
+</footer>
+<script src="js/main.js"></script>
+<script type="text/javascript">
+
+    var _gaq = _gaq || [];
+    _gaq.push(['_setAccount', 'UA-25243343-1']);
+    _gaq.push(['_trackPageview']);
+
+    (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+    })();
+
+</script>
+</body>
+</html>
